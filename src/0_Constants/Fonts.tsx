@@ -1,0 +1,21 @@
+
+export const FontFamilies = {
+    thin: '',
+    extralight: '',
+    light: '',
+    medium: '',
+    regular: '',
+    semibold: '',
+    bold: 'NotoSans-Bold',
+    extrabold: '',
+    black: '',
+    italic_thin: '',
+    italic_extralight: '',
+    italic_light: '',
+    italic_medium: '',
+    italic_regular: '',
+    italic_semibold: '',
+    italic_bold: '',
+    italic_extrabold: '',
+    italic_black: '',
+};

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import Search from '../../1_Assets/Svgs/Search.svg';
 
 const HeaderRight = () : React.ReactNode => {
     return (
         <TouchableOpacity testID="search-button">
-            <Text>Search</Text>
+            <Search />
         </TouchableOpacity>
     );
 };

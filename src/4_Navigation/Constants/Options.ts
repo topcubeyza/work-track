@@ -1,7 +1,11 @@
+
+import React from 'react';
 import { FontFamilies } from '../../0_Constants/Fonts';
 import Metrics from '../../0_Constants/Metrics';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import {  } from 'react-native-safe-area-context';
+import HeaderRight from '../Components/HeaderRight';
+import { TouchableOpacity, View } from 'react-native';
 
 export const mainHeaderOptions : StackNavigationOptions = {
     headerTitle: 'Bugün Ne Yaptın?',
@@ -14,5 +18,11 @@ export const mainHeaderOptions : StackNavigationOptions = {
         fontFamily: FontFamilies.bold,
         fontSize: Metrics.measure(18),
     },
-    // headerRight:
+    headerTitleContainerStyle: {
+        marginLeft: Metrics.marginHorizontal,
+    },
+    headerRight: HeaderRight,
+    headerRightContainerStyle: {
+        paddingRight: Metrics.marginHorizontal,
+    },
 };

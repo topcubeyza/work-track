@@ -9,12 +9,16 @@
  */
 
 import React from 'react';
+import { StatusBar } from 'react-native';
 import NavigationContainer from './src/4_Navigation/NavigationContainer';
 
 const App = () => {
 
   return (
-    <NavigationContainer />
+    <>
+      <StatusBar barStyle={'light-content'}/>
+      <NavigationContainer />
+    </>
   );
 };
 

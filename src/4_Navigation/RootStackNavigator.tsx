@@ -1,8 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreens, HomeScreenNames } from '../7_Modules/Home';
 
-const RootStackNavigator = createStackNavigator();
+import { RootStackParamList } from './Types/NavigationTypes';
+
+import { HomeScreens } from '../7_Modules/Home';
+import { mainHeaderOptions } from './Constants/Options';
+
+const RootStackNavigator = createStackNavigator<RootStackParamList>();
 
 const RootStackNavigation = () => {
     return (
@@ -10,7 +14,10 @@ const RootStackNavigation = () => {
             id="root-stack">
             <RootStackNavigator.Screen
                 component={HomeScreens.HomeScreen}
-                name={HomeScreenNames.Home} />
+                name={'home-screen'}
+                options={{
+                    ...mainHeaderOptions,
+                }} />
         </RootStackNavigator.Navigator>
     );
 };

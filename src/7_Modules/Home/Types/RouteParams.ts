@@ -1,3 +1,3 @@
 export type HomeRouteParams = {
-    Home: undefined,
+    HomeScreen: undefined,
 };

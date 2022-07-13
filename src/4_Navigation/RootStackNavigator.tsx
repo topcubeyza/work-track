@@ -14,7 +14,7 @@ const RootStackNavigation = () => {
             id="root-stack">
             <RootStackNavigator.Screen
                 component={HomeScreens.HomeScreen}
-                name={'home-screen'}
+                name={'HomeScreen'}
                 options={{
                     ...mainHeaderOptions,
                 }} />

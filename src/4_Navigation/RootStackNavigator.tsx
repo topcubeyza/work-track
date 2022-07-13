@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { View } from 'react-native';
+import { HomeScreens, HomeScreenNames } from '../7_Modules/Home';
 
 const RootStackNavigator = createStackNavigator();
 
@@ -9,8 +9,8 @@ const RootStackNavigation = () => {
         <RootStackNavigator.Navigator
             id="root-stack">
             <RootStackNavigator.Screen
-                component={View}
-                name="hello"/>
+                component={HomeScreens.HomeScreen}
+                name={HomeScreenNames.Home} />
         </RootStackNavigator.Navigator>
     );
 };

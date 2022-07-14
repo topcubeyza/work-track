@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import Metrics from '../../0_Constants/Metrics';
 import Search from '../../1_Assets/Svgs/Search.svg';
 
-const HeaderRight = () : React.ReactNode => {
+const HeaderRight = () : JSX.Element => {
     return (
         <TouchableOpacity
             testID="search-button"

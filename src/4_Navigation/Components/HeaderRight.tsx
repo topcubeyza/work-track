@@ -1,90 +1,71 @@
-import React, { useRef } from 'react';
-import { Animated, Easing, TextInput, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Animated, TextInput, TouchableOpacity, View } from 'react-native';
 import Metrics from '../../0_Constants/Metrics';
 import Icons from '../../1_Assets/Svgs';
-import styles, { HEADER_HEIGHT } from './styles/HeaderRightStyles';
+import styles from './styles/HeaderRightStyles';
+import { useSearchAnimation } from './useSearchAnimation';
 
 const HeaderRight = (): JSX.Element => {
-    const inputVisibilityAnim = useRef(new Animated.Value(0)).current;
+
+    const {
+        showInput,
+        hideInput,
+        iconVisibility,
+        inputAreaOpacity,
+        inputAreaTranslateX,
+        inputAreaTranslateY,
+    } = useSearchAnimation();
+
     const _onPress_SearchButton = () => {
-        // Show search area
-        Animated.timing(inputVisibilityAnim, {
-            duration: 400,
-            toValue: 1,
-            useNativeDriver: true,
-            // easing: Easing.in(Easing.ease),
-        }).start();
+        showInput();
     };
 
     const _onPress_BackButton = () => {
-        // Hide search area
-        Animated.timing(inputVisibilityAnim, {
-            duration: 200,
-            toValue: 0,
-            useNativeDriver: true,
-        }).start();
+        hideInput();
     };
-
-    const _searchAreaOpacity = inputVisibilityAnim.interpolate({
-        inputRange: [0, 0.5, 1],
-        outputRange: [0, 0, 1],
-    });
-
-    const _searchAreaTranslateX = inputVisibilityAnim.interpolate({
-        inputRange: [0, 1],
-        outputRange: [(Metrics.width - 2 * Metrics.marginHorizontal), 0],
-    });
-
-    const _searchAreaTranslateY = inputVisibilityAnim.interpolate({
-        inputRange: [0, 1],
-        outputRange: [-HEADER_HEIGHT, 0],
-    });
-
-    const _searchIconVisibility = inputVisibilityAnim.interpolate({
-        inputRange: [0, 0.5, 1],
-        outputRange: [1, 0, 0],
-    });
 
     return (
         <View style={styles.container}>
-            <Animated.View style={{
+            <Animated.View style={[styles.inputContainer, {
                 transform: [
                     {
-                        translateX: _searchAreaTranslateX,
+                        translateX: inputAreaTranslateX,
                     },
                     {
-                        translateY: _searchAreaTranslateY,
+                        translateY: inputAreaTranslateY,
                     },
                 ],
-            }}>
-                <Animated.View style={[styles.inputContainer, {
-                    opacity: _searchAreaOpacity
-                }]}>
-                    <TouchableOpacity
-                        onPress={_onPress_BackButton}
-                        accessibilityLabel={'back button'}>
-                        <Icons.BackArrow style={styles.backIcon} />
-                    </TouchableOpacity>
-                    <TextInput
-                        style={styles.input}
-                        placeholderTextColor={'#BCBEC2'}
-                        placeholder={'Search...'}
-                        selectionColor={'#F2EB0D'}
-                        accessibilityLabel={'search input'}
-                    />
-                </Animated.View>
+                opacity: inputAreaOpacity,
+            }]}>
+                <TouchableOpacity
+                    onPress={_onPress_BackButton}
+                    accessibilityLabel={'back button'}
+                    hitSlop={{
+                        left: Metrics.measure(10),
+                        right: Metrics.measure(30),
+                        bottom: Metrics.measure(10),
+                        top: Metrics.measure(10),
+                    }}>
+                    <Icons.BackArrow style={styles.backIcon} />
+                </TouchableOpacity>
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor={'#BCBEC2'}
+                    placeholder={'Search...'}
+                    selectionColor={'#F2EB0D'}
+                    accessibilityLabel={'search input'}
+                />
             </Animated.View>
             <Animated.View style={[
                 styles.searchIconAnimatedContainer,
                 {
                     transform: [{
-                        scale: _searchIconVisibility,
+                        scale: iconVisibility,
                     }],
-                    opacity: _searchIconVisibility,
+                    opacity: iconVisibility,
                 },
             ]}>
                 <TouchableOpacity
-                    style={styles.searchIconTouchable}
                     onPress={_onPress_SearchButton}
                     hitSlop={{
                         left: Metrics.measure(30),

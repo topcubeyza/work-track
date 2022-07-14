@@ -7,9 +7,7 @@ export const HEADER_HEIGHT = Metrics.measure(30);
 
 export default StyleSheet.create({
     container: {
-        // flexDirection: 'row',
         height: HEADER_HEIGHT,
-        // backgroundColor: 'yellow',
         justifyContent: 'flex-start',
         alignItems: 'flex-end',
     },
@@ -17,12 +15,8 @@ export default StyleSheet.create({
         position: 'absolute',
         top: 0,
         right: 0,
-        // backgroundColor: 'pink',
         height: HEADER_HEIGHT,
         justifyContent: 'center',
-    },
-    searchIconTouchable: {
-        
     },
     searchIcon: {
         width: SEARCH_ICON_WIDTH,
@@ -36,7 +30,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#55575E',
-        // backgroundColor: 'pink'
     },
     input: {
         flexGrow: 1,
@@ -46,9 +39,6 @@ export default StyleSheet.create({
         fontFamily: FontFamilies.regular,
         fontSize: Metrics.measure(14),
         marginLeft: Metrics.measure(20),
-    },
-    backIconTouchable: {
-
     },
     backIcon: {
         width: Metrics.measure(18),

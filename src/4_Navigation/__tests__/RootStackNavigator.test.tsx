@@ -26,7 +26,7 @@ describe('Testing root stack navigator first screen', () => {
         );
 
         render(component);
-        const searchButton = await screen.findByTestId('search-button');
+        const searchButton = await screen.findByLabelText('search button');
 
         expect(searchButton).toBeTruthy();
     });

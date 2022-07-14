@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react-native';
-import HeaderRight from '../Components/HeaderRight';
+import HeaderSearch from '../Components/HeaderSearch';
 
 describe('Testing header search button', () => {
     test('opens search area when pressed', async () => {
-        const component = <HeaderRight />;
+        const component = <HeaderSearch />;
         const { getByLabelText } = render(component);
 
         const button = getByLabelText('search button');

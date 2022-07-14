@@ -2,10 +2,10 @@ import React from 'react';
 import { Animated, TextInput, TouchableOpacity, View } from 'react-native';
 import Metrics from '../../0_Constants/Metrics';
 import Icons from '../../1_Assets/Svgs';
-import styles from './styles/HeaderRightStyles';
+import styles from './styles/HeaderSearchStyles';
 import { useSearchAnimation } from './useSearchAnimation';
 
-const HeaderRight = (): JSX.Element => {
+const HeaderSearch = (): JSX.Element => {
 
     const {
         showInput,
@@ -82,4 +82,4 @@ const HeaderRight = (): JSX.Element => {
     );
 };
 
-export default HeaderRight;
+export default HeaderSearch;

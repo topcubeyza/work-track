@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Animated } from 'react-native';
 import Metrics from '../../0_Constants/Metrics';
-import { HEADER_HEIGHT } from './styles/HeaderRightStyles';
+import { HEADER_HEIGHT } from './styles/HeaderSearchStyles';
 
 const SHOW_ANIM_DURATION = 400;
 const HIDE_ANIM_DURATION = 200;

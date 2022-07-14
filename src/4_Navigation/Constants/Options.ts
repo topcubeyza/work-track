@@ -2,7 +2,7 @@
 import { FontFamilies } from '../../0_Constants/Fonts';
 import Metrics from '../../0_Constants/Metrics';
 import { StackNavigationOptions } from '@react-navigation/stack';
-import HeaderRight from '../Components/HeaderRight';
+import HeaderSearch from '../Components/HeaderSearch';
 
 export const mainHeaderOptions : StackNavigationOptions = {
     headerTitle: 'Bugün Ne Yaptın?',
@@ -18,7 +18,7 @@ export const mainHeaderOptions : StackNavigationOptions = {
     headerTitleContainerStyle: {
         marginLeft: Metrics.marginHorizontal,
     },
-    headerRight: HeaderRight,
+    headerRight: HeaderSearch,
     headerRightContainerStyle: {
         paddingRight: Metrics.marginHorizontal,
     },

@@ -1,5 +1,8 @@
-import Search from './search.svg';
+import Search from './Search.svg';
+import BackArrow from './BackArrow.svg';
 
-export {
+
+export default {
     Search,
+    BackArrow,
 };

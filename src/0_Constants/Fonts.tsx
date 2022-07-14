@@ -4,7 +4,7 @@ export const FontFamilies = {
     extralight: '',
     light: '',
     medium: '',
-    regular: '',
+    regular: 'NotoSans-Regular',
     semibold: '',
     bold: 'NotoSans-Bold',
     extrabold: '',

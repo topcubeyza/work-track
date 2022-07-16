@@ -1,18 +1,16 @@
 import { useRef } from 'react';
-import { Animated } from 'react-native';
+import { Animated, Easing } from 'react-native';
 import Metrics from '../../0_Constants/Metrics';
-import { HEADER_HEIGHT } from './styles/HeaderSearchStyles';
 
-const SHOW_ANIM_DURATION = 400;
+const SHOW_ANIM_DURATION = 300;
 const HIDE_ANIM_DURATION = 200;
 
 type SearchAnimation = {
     showInput: () => void,
     hideInput: () => void,
-    inputAreaOpacity: Animated.AnimatedInterpolation,
-    inputAreaTranslateX: Animated.AnimatedInterpolation,
-    inputAreaTranslateY: Animated.AnimatedInterpolation,
-    iconVisibility: Animated.AnimatedInterpolation,
+    containerTranslateX: Animated.AnimatedInterpolation,
+    oldSectionOpacity: Animated.AnimatedInterpolation,
+    newSectionOpacity: Animated.AnimatedInterpolation,
 };
 
 export const useSearchAnimation = () : SearchAnimation => {
@@ -33,32 +31,26 @@ export const useSearchAnimation = () : SearchAnimation => {
         }).start();
     };
 
-    const inputAreaOpacity = inputVisibilityAnim.interpolate({
+    const containerTranslateX = inputVisibilityAnim.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, -1 * Metrics.width],
+    });
+
+    const oldSectionOpacity = inputVisibilityAnim.interpolate({
+        inputRange: [0, 0.01, 1],
+        outputRange: [1, 0, 0],
+    });
+
+    const newSectionOpacity = inputVisibilityAnim.interpolate({
         inputRange: [0, 0.5, 1],
         outputRange: [0, 0, 1],
-    });
-
-    const inputAreaTranslateX = inputVisibilityAnim.interpolate({
-        inputRange: [0, 1],
-        outputRange: [(Metrics.width - 2 * Metrics.marginHorizontal), 0],
-    });
-
-    const inputAreaTranslateY = inputVisibilityAnim.interpolate({
-        inputRange: [0, 1],
-        outputRange: [-HEADER_HEIGHT, 0],
-    });
-
-    const iconVisibility = inputVisibilityAnim.interpolate({
-        inputRange: [0, 0.5, 1],
-        outputRange: [1, 0, 0],
     });
 
     return {
         showInput,
         hideInput,
-        inputAreaOpacity,
-        inputAreaTranslateX,
-        inputAreaTranslateY,
-        iconVisibility,
+        containerTranslateX,
+        oldSectionOpacity,
+        newSectionOpacity,
     };
 };
